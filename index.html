@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Tic Tac Toe</title>
+    <script defer src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside></aside>
+    <main>
+        <header></header>
+        <section id="gameModule">
+            <h1>Tic Tac Toe</h1>
+            <article id="gameCard">
+                <details id="playerStats" open>
+                    <summary>DashBoard</summary>
+                    <table>
+                        <caption>Player stats</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Player</th>
+                                <th scope="col">Name</th>
+                                <th class="number" scope="col">Current</th>
+                                <th class="number" scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playerStatsRow">
+                            <script id="playerstatsrow-template" type="text/template">
+                                {{#playerstatsrow}}
+                                    <tr>
+                                        <td scope="row">{{dataPlayerLength}}</td>
+                                        <td>{{dataPlayerName}}</td>
+                                        <td>{{dataPlayerCurrentScore}}</td>
+                                        <td>{{dataPlayerTotalScore}}</td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td scope="row">2</td>
+                                        <td>Player2</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr> -->
+                                {{/playerstatsrow}}
+                            </script>
+                        </tbody>
+                    </table>
+                </details>
+                <form>
+                    <fieldset id="gameMode">
+                        <legend>Select the mode:</legend>
+
+                        <ul>
+                            <li>
+                                <label for="pvp">Versus Another Player</label>
+                                <input type="radio" name="mode" id="pvp" value="pvp" checked>
+                            </li>
+                            <li>
+                                <label for="pvc">Versus Computer</label>
+                                <input type="radio" name="mode" id="pvc" value="pvc">
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <fieldset id="playerDetails">
+                        <legend>Enter your name:</legend>
+                        <ul>
+                            <li>
+                                <label for="p1name">Player 1:</label>
+                                <input type="text" name="p1name" id="p1name" placeholder="Tic as Joe" value="test1" required>
+                            </li>
+                            <li id="p2Details">
+                                <label for="p2name">Player 2:</label>
+                                <input type="text" name="p2name" id="p2name" placeholder="Squishy Toe" required>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    <p id="gameInitBtn">
+                        <script id="startbtn-template" type="text/template">
+                            {{#startbtn}}
+                                <button id="startBtn" type="button" class="{{dataStart}}">Start</button>
+                                <button id="resetBtn" type="button" class="{{dataReset}}">Reset</button>
+                                <button id="newBtn" type="button" class="{{dataNew}}">New</button>
+                            {{/startbtn}}
+                        </script>
+                    </p>
+                </form>
+                <p id="announceBoard">
+                    <script id="announceboard-template" type="text/template">
+                        {{#announceboard}}
+                            {{dataText}}
+                        {{/announceboard}}
+                    </script>
+                </p>
+                <p id="alertBoard">
+                    <script id="alertboard-template" type="text/template">
+                        {{#alertboard}}
+                            {{dataText}}
+                        {{/alertboard}}
+                    </script>
+                </p>
+            </article>
+            <article id="gameBoard">
+                <ul id="board">
+                    <script id="board-template" type="text/template">
+                        {{#board}}
+                            <li class="{{dataBoardEditable}}" data-board-no="{{dataBoardNumber}}" data-player-tick="{{dataPlayerTick}}">
+                                <i class="tickCross {{dataCross}}"></i>
+                                <i class="tickRound {{dataRound}}"></i>
+                                <i class="lineHorizontal glow winLine {{dataHorizontal}}"></i>
+                                <i class="lineVertical winLine {{dataVertical}}"></i>
+                                <i class="lineDiagonalOne winLineDiagonal {{dataDiagonalOne}}"></i>
+                                <i class="lineDiagonalTwo winLineDiagonal {{dataDiagonalTwo}}"></i>
+                            </li>
+                        {{/board}}
+                    </script>
+                </ul>
+            </article>
+        </section>
+        <footer></footer>
+    </main>
+    <!-- dialog -->
+    <dialog id="nextGameDialog">
+        <p id="nextGameStatement">
+            <script id="nextgamestatement-template" type="text/template">
+                {{#announceboard}}
+                    {{dataText}} How about another match?
+                {{/announceboard}}
+            </script>
+        </p>
+        <button class="dialogBtn confirm">Confirm</button>
+        <button class="dialogBtn cancel">Cancel</button>
+    </dialog>
+    <!-- dialog -->
+</body>
+</html>

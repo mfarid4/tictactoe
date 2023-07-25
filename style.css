@@ -1,0 +1,181 @@
+:root {
+    --boxNum: 3;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    margin: 0;
+}
+
+button,
+input[type="radio"],
+#board li.editable {
+    cursor: pointer;
+}
+
+#board li.editable:hover {
+    background-color: rgba(80, 80, 80, 0.1);
+}
+
+#gameModule {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 2rem;
+}
+
+#gameModule > * {
+    flex: 1 100%;
+}
+
+#gameModule > *:not(h1) {
+    flex: 1 50%;
+}
+
+form#playerDetails {
+    display: flex;
+    gap: 10px;
+    flex-flow: column wrap;
+}
+
+ul#board {
+    display: grid;
+    grid-template-rows: repeat(var(--boxNum), 100px);
+    grid-template-columns: repeat(var(--boxNum), 100px);
+    justify-content: center;
+}
+
+ul#board li {
+    border: solid black;
+    border-collapse: collapse;
+    position: relative;
+    transition: border 1s ease-in;
+}
+
+li i {
+    display: block;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+}
+
+i.tickCross {
+    background-image: url(asset/images/close-thick.svg);
+}
+
+i.tickRound {
+    background-image: url(asset/images/circle-outline.svg);
+}
+
+i.lineHorizontal {
+    background-image: url(asset/images/minus.svg);
+}
+
+i.lineVertical {
+    background-image: url(asset/images/minus.svg);
+    transform: rotate(90deg);
+}
+
+i.lineDiagonalOne {
+    background-image: url(asset/images/minus.svg);
+    transform: rotate(45deg);
+}
+
+i.lineDiagonalTwo {
+    background-image: url(asset/images/minus.svg);
+    transform: rotate(-45deg);
+}
+
+#p2Details,
+li i  {
+    visibility: hidden;
+}
+
+#p2Details.visible,
+li i.visible  {
+    visibility: visible
+}
+
+#gameMode,
+#gameCard button,
+#playerStats,
+#playerDetails {
+    display: none;
+}
+
+#gameCard button.visible {
+    display: inline-block
+}
+
+#gameMode.visible,
+#playerDetails.visible {
+    display: block;
+}
+
+#playerStats.visible {
+    display: flex;
+    justify-content: center;
+}
+
+#playerStats {
+    flex: 1 100%;
+}
+
+#gameCard {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#gameCard > * {
+    flex: 1 100%;
+}
+
+#playerStats table {
+    border-spacing: 0;
+}
+
+#playerStats th {
+    background: rgba(80, 80, 80, 0.3);
+}
+
+#playerStats tr:nth-child(odd){
+    background: rgba(80, 80, 80, 0.1);
+}
+
+#playerStats th:not(:first-child, :last-child),
+#playerStats td:not(:first-child, :last-child){
+    border-top: solid black;
+    border-bottom: solid black;
+
+    min-width: 100px;
+    text-align: left;
+}
+
+#playerStats .number {
+    text-align: right;
+}
+
+#playerStats th:is(:first-child),
+#playerStats td:is(:first-child){
+    border: solid black;
+    border-right: none;
+}
+
+#playerStats th:is(:last-child),
+#playerStats td:is(:last-child){
+    border: solid black;
+    border-left: none;
+}
+
+#gameMode li {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+#alertBoard {
+    color: red;
+}
