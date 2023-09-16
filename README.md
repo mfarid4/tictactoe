@@ -3,7 +3,10 @@
 Live Demo:
 https://mfarid4.github.io/tictactoe
 
-![Project Screenshot](./asset/images/tictactoe.png "TicTacToe")
+![Project Screenshot](./images/tictactoeBase.png "TicTacToe")
+
+### Libraries
+- MustacheJS
 
 ### Objectives
 
